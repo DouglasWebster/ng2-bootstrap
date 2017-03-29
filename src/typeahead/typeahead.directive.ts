@@ -15,7 +15,7 @@ import 'rxjs/add/operator/toArray';
 import { TypeaheadMatch } from './typeahead-match.class';
 import { ComponentLoaderFactory, ComponentLoader } from '../component-loader';
 
-@Directive({selector: '[typeahead]'})
+@Directive({selector: '[typeahead]', exportAs: 'bs-typeahead'})
 export class TypeaheadDirective implements OnInit, OnDestroy {
   /** options source, can be Array of strings, objects or an Observable for external matching process */
   @Input() public typeahead: any;
@@ -148,7 +148,7 @@ export class TypeaheadDirective implements OnInit, OnDestroy {
   }
 
   @HostListener('keydown', ['$event'])
-  public onKeydown(e: KeyboardEvent): void {
+  public onKeydown(e: any): void {
     // no container - no problems
     if (!this._container) {
       return;
